@@ -41,16 +41,28 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   "%database_driver%"
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        # path:     "%database_path%"
+        default_connection: master
+        connections:
+            master:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+                wrapper_class: Doctrine\DBAL\Connections\MasterSlaveConnection
+                # if using pdo_sqlite as your database driver, add the path in parameters.yml
+                # e.g. database_path: "%kernel.root_dir%/data/data.db3"
+                # path:     "%database_path%"
+                slaves:
+                    slave1:
+                        host:     "%slave1_database_host%"
+                        port:     "%slave1_database_port%"
+                        dbname:   "%slave1_database_name%"
+                        user:     "%slave1_database_user%"
+                        password: "%slave1_database_password%"
+                        charset:  UTF8
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
