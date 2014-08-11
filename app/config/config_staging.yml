@@ -1,5 +1,5 @@
 imports:
-    - { resource: parameters_prod.yml }
+    - { resource: parameters_staging.yml }
     - { resource: config.yml }
 
 #framework:
