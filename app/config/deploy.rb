@@ -10,6 +10,7 @@ set :branch, 'book-test'
 # misc setting
 set :use_sudo, false # generated file owned user, not root
 set :use_composer, true # to run composer install/update
+set :user, 'kitchen' # to ssh and make permission
 set :ssh_options, :keys => "/home/kitchen/.ssh/app1/id_rsa"
 logger.level = Logger::MAX_LEVEL
 # set :copy_vendors, true # copy before composer install
@@ -17,7 +18,7 @@ logger.level = Logger::MAX_LEVEL
 # set permissions
 set :use_set_permissions, true # to set permission
 set :webserver_user, "apache"
-set :permission_method,   :acl # use setfacl to writable dirs
+set :permission_method, :chmod_alt # use chmod -R a+w to writable dirs
 
 # multi stage
 set :stages, %w(production staging)
