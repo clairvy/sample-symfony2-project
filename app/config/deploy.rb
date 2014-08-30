@@ -10,6 +10,7 @@ set :branch, 'book-test'
 # misc setting
 set :use_sudo, false # generated file owned user, not root
 set :use_composer, true # to run composer install/update
+set :copy_vendors, true # to speedup composer install
 set :user, 'kitchen' # to ssh and make permission
 set :ssh_options, :keys => "/home/kitchen/.ssh/app1/id_rsa"
 logger.level = Logger::MAX_LEVEL
