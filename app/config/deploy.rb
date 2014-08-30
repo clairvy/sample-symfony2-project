@@ -21,7 +21,7 @@ set :webserver_user, "apache"
 set :permission_method, :chmod_alt # use chmod -R a+w to writable dirs
 
 # multi stage
-set :stages, %w(production staging)
+set :stages, %w(prod staging)
 set :default_stage, "staging"
 set :stage_dir, "app/config/deploy"
 require 'capistrano/ext/multistage'
