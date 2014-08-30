@@ -35,3 +35,14 @@ namespace(:deploy) do
     CMD
   end
 end
+
+before "deploy:set_permissions", "deploy:setup_log_setting"
+after "deploy:set_permissions", "deploy:teardown_log_setting"
+namespace(:deploy) do
+  task :setup_log_setting do
+    set :use_sudo, true # generated file owned user, not root
+  end
+  task :teardown_log_setting do
+    set :use_sudo, false # generated file owned user, not root
+  end
+end
