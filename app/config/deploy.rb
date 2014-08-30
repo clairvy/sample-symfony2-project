@@ -7,11 +7,19 @@ set :repository, "https://github.com/clairvy/#{application}.git"
 set :scm, :git
 set :branch, 'book-test'
 
-# setting
-set :use_sudo, false
-set :use_composer, true
+# misc setting
+set :use_sudo, false # generated file owned user, not root
+set :use_composer, true # to run composer install/update
 set :ssh_options, :keys => "/home/kitchen/.ssh/app1/id_rsa"
 logger.level = Logger::MAX_LEVEL
+# set :copy_vendors, true # copy before composer install
+
+# set permissions
+set :use_set_permissions, true # to set permission
+set :webserver_user, "apache"
+set :permission_method,   :acl # use setfacl to writable dirs
+
+# multi stage
 set :stages, %w(production staging)
 set :default_stage, "staging"
 set :stage_dir, "app/config/deploy"
@@ -22,7 +30,7 @@ after "deploy:share_childs", "deploy:link_environment"
 namespace(:deploy) do
   task :link_environment do
     run <<-CMD
-      cd #{File.join(release_path, %w|app|)} && ln -nfs environment_staging.php environment.php
+      cd #{File.join(release_path, %w|app|)} && ln -nfs environment_#{stage}.php environment.php
     CMD
   end
 end
