@@ -37,13 +37,13 @@ namespace(:deploy) do
   end
 end
 
-before "deploy:set_permissions", "deploy:setup_log_setting"
-after "deploy:set_permissions", "deploy:teardown_log_setting"
+before "deploy:set_permissions", "deploy:setup_to_set_permissions"
+after "deploy:set_permissions", "deploy:teardown_set_permissions"
 namespace(:deploy) do
-  task :setup_log_setting do
+  task :setup_set_permissions do
     set :use_sudo, true # generated file owned user, not root
   end
-  task :teardown_log_setting do
+  task :teardown_set_permissions do
     set :use_sudo, false # generated file owned user, not root
   end
 end
