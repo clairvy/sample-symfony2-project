@@ -1,12 +1,12 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: dbm
+    database_host: db1m
     database_port: null
     database_name: symfony2_dev_db
     database_user: symfony2_user
     database_password: symfony2_pass
-    slave1_database_host: dbs
+    slave1_database_host: db1s1
     slave1_database_port: null
     slave1_database_name: symfony2_dev_db
     slave1_database_user: symfony2_user

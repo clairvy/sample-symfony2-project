@@ -41,9 +41,9 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        default_connection: master
+        default_connection: db1
         connections:
-            master:
+            db1:
                 driver:   "%database_driver%"
                 host:     "%database_host%"
                 port:     "%database_port%"
