@@ -5,6 +5,7 @@ set :keep_releases, 3
 # from
 set :repository, "https://github.com/clairvy/#{application}.git"
 set :scm, :git
+set :branch, 'book-test'
 
 # setting
 set :use_sudo, false
